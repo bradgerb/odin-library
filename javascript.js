@@ -14,16 +14,22 @@ function Book(title, author, pages, read){
 
 function addBookToLibrary(bookName){
     myLibrary.push(bookName);
-    displayLibrary();
-}
 
-function displayLibrary(){
+    let readY_N;
+    if (bookName.read === 'read'){
+        readY_N = "Yes"
+    } else if(bookName.read === 'not read'){
+        readY_N = "No"
+    } else {
+        readY_N = "Error"
+    }
     const card = document.createElement("div");
     card.classList.add("card");
+    card.textContent = `Title: ${bookName.title}\nAuthor: ${bookName.author}\nPage Count: ${bookName.pages}\nRead?: ${readY_N}`;
     container.appendChild(card);
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not yet read')
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read')
 const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Rowling', '320', 'read')
 
 addBookToLibrary(theHobbit);
