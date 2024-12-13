@@ -14,25 +14,29 @@ function Book(title, author, pages, read){
 
 function addBookToLibrary(bookName){
     myLibrary.push(bookName);
+}
 
-    let readY_N;
-    if (bookName.read === 'read'){
-        readY_N = "Yes"
-    } else if(bookName.read === 'not read'){
-        readY_N = "No"
-    } else {
-        readY_N = "Error"
+function displayLibrary(){
+    for(let i = 0; i < myLibrary.length; i++){
+
+        let readY_N;
+
+        if (myLibrary[i].read === 'read'){
+            readY_N = "Yes"
+        } else {
+            readY_N = "No"
+        }
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = `Title: ${myLibrary[i].title}\nAuthor: ${myLibrary[i].author}\nPage Count: ${myLibrary[i].pages}\nRead?: ${readY_N}\n`;
+
+        const button = document.createElement("button");
+        button.textContent = "Remove";
+        card.appendChild(button);
+
+        container.appendChild(card);
     }
-
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.textContent = `Title: ${bookName.title}\nAuthor: ${bookName.author}\nPage Count: ${bookName.pages}\nRead?: ${readY_N}\n`;
-
-    const button = document.createElement("button");
-    button.textContent = "Remove";
-    card.appendChild(button);
-
-    container.appendChild(card);
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read')
@@ -41,10 +45,12 @@ const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Row
 addBookToLibrary(theHobbit);
 addBookToLibrary(harryPotter1);
 
-console.log(theHobbit.info());
-console.log(harryPotter1.info());
+displayLibrary();
 
-console.table(myLibrary);
+// console.log(theHobbit.info());
+// console.log(harryPotter1.info());
+
+// console.table(myLibrary);
 
 // function bookForSale(title, author, pages, read, price, ISBN){
 //     Book.call(this, title, author, pages, read)
