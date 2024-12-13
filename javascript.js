@@ -1,5 +1,6 @@
 const myLibrary =[];
 const container = document.querySelector(".body");
+const newBookForm = document.getElementById("newBookForm")
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -38,6 +39,14 @@ function displayLibrary(){
         container.appendChild(card);
     }
 }
+
+newBookForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    addBookToLibrary();
+    displayLibrary();
+
+});
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read')
 const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Rowling', '320', 'read')
