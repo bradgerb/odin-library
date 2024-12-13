@@ -46,24 +46,3 @@ addBookToLibrary(theHobbit);
 addBookToLibrary(harryPotter1);
 
 displayLibrary();
-
-// console.log(theHobbit.info());
-// console.log(harryPotter1.info());
-
-// console.table(myLibrary);
-
-// function bookForSale(title, author, pages, read, price, ISBN){
-//     Book.call(this, title, author, pages, read)
-//         this.price = price;
-//         this.ISBN = ISBN;
-//         this.information = function(){
-//             return this.price
-//         }
-// }
-
-// const theTwoTowers = new bookForSale('The Two Towers', 'J.R.R. Tolkien', '500', 'read', '$12.99', '12345')
-
-// console.log(theTwoTowers.information());
-// console.log(theTwoTowers.info());
-
-// console.log(Object.getPrototypeOf(theTwoTowers));
