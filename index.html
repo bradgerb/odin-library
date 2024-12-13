@@ -8,6 +8,30 @@
     <script src="./javascript.js" defer></script>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <div class="sidebar">
+            <form action="#" method="post">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" placeholder="Please read me" required>
+                
+                <br><br><label for="author">Author:</label><br>
+                <input type="text" id="author" name="author" placeholder="Me, I wrote this" required>
+                
+                <br><br><label for="pages">Page count:</label><br>
+                <input type="text" id="pages" name="pages" placeholder="&#8734" required>
+                
+                <br><br><label for="read">Read?:</label><br>
+                <input type="radio" id="read" name="read" value="yes" required>
+                <label for="yes">Yes</label>
+                <input type="radio" id="read" name="read" value="no" required>
+                <label for="no">No</label>
+
+                <br><br><input type="submit" value="Add Book">
+            </form>
+        </div>
+        <div class="body">
+
+        </div>
+    </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 const myLibrary =[];
-const container = document.querySelector(".container");
+const container = document.querySelector(".body");
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -23,9 +23,15 @@ function addBookToLibrary(bookName){
     } else {
         readY_N = "Error"
     }
+
     const card = document.createElement("div");
     card.classList.add("card");
-    card.textContent = `Title: ${bookName.title}\nAuthor: ${bookName.author}\nPage Count: ${bookName.pages}\nRead?: ${readY_N}`;
+    card.textContent = `Title: ${bookName.title}\nAuthor: ${bookName.author}\nPage Count: ${bookName.pages}\nRead?: ${readY_N}\n`;
+
+    const button = document.createElement("button");
+    button.textContent = "Remove";
+    card.appendChild(button);
+
     container.appendChild(card);
 }
 
