@@ -16,6 +16,7 @@ body{
     height: 100vh;
     padding: 10px;
     background-color: lightblue;
+    border-right: black solid 1px;
 }
 
 .card{
