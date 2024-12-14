@@ -1,6 +1,6 @@
 const myLibrary =[];
 const container = document.querySelector(".body");
-const newBookForm = document.getElementById("newBookForm")
+const newBookForm = document.getElementById("newBookForm");
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -18,6 +18,7 @@ function addBookToLibrary(bookName){
 }
 
 function displayLibrary(){
+
     for(let i = 0; i < myLibrary.length; i++){
 
         let readY_N;
@@ -40,10 +41,18 @@ function displayLibrary(){
     }
 }
 
+function clearCards(){
+    console.log(myLibrary);
+    for(let i = 0; i < myLibrary.length; i++){
+        container.removeChild(container.lastChild);
+    }
+}
+
 newBookForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    addBookToLibrary();
+    // addBookToLibrary();
+    clearCards();
     displayLibrary();
 
 });
