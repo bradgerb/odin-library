@@ -1,17 +1,14 @@
 const myLibrary =[];
 const container = document.querySelector(".body");
 const newBookForm = document.getElementById("newBookForm");
-let bookIndex = 2;
-const a = 1; //testing
 
-function Book(title, author, pages, read, index){
+function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.index = index;
     this.info = function(){
-        let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read + '. Index number ' + this.index;
+        let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read;
         return info
     }
 }
@@ -21,6 +18,8 @@ function addBookToLibrary(bookName){
 }
 
 function displayLibrary(){
+
+    let index = 0;
 
     for(let i = 0; i < myLibrary.length; i++){
 
@@ -37,8 +36,10 @@ function displayLibrary(){
         card.textContent = `Title: ${myLibrary[i].title}\nAuthor: ${myLibrary[i].author}\nPage Count: ${myLibrary[i].pages}\nRead?: ${readY_N}\n`;
 
         const button = document.createElement("button");
-        button.addEventListener("click", removeBook);
+        button.setAttribute("ID", `${index}`);
+        index++;
         button.textContent = "Remove";
+        button.addEventListener("click", removeBook);
         card.appendChild(button);
 
         container.appendChild(card);
@@ -55,7 +56,7 @@ function clearCards(){
 
 function removeBook(){
     clearCards();
-    myLibrary.splice(a-1, a);
+    myLibrary.splice(0, 1);
     console.log(myLibrary);
     displayLibrary();
 }
@@ -69,8 +70,7 @@ newBookForm.addEventListener("submit", function (e) {
     //     console.log(item[0], item[1]);
     // }
 
-    const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"), bookIndex);
-    bookIndex++;
+    const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"));
 
     clearCards();
     addBookToLibrary(newBook);
