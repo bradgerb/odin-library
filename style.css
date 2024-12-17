@@ -33,3 +33,7 @@ body{
 .button{
     margin-top: 10px;
 }
+
+.cardButton{
+    margin-right: 5px;
+}

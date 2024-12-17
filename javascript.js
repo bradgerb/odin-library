@@ -35,12 +35,20 @@ function displayLibrary(){
         card.classList.add("card");
         card.textContent = `Title: ${myLibrary[i].title}\nAuthor: ${myLibrary[i].author}\nPage Count: ${myLibrary[i].pages}\nRead?: ${readY_N}\n`;
 
-        const button = document.createElement("button");
-        button.setAttribute("ID", `${index}`);
+        const removeButton = document.createElement("button");
+        removeButton.setAttribute("ID", `${index}`);
+        removeButton.classList.add("cardButton");
+        removeButton.textContent = "Remove";
+        removeButton.addEventListener("click", removeBook);
+        card.appendChild(removeButton);
+
+        const changeReadButtton = document.createElement("button");
+        changeReadButtton.setAttribute("ID", `${index}`);
+        changeReadButtton.textContent = "Change Read status";
+        changeReadButtton.addEventListener("click", changeRead);
+        card.appendChild(changeReadButtton);
+
         index++;
-        button.textContent = "Remove";
-        button.addEventListener("click", removeBook);
-        card.appendChild(button);
 
         container.appendChild(card);
     }
@@ -59,9 +67,22 @@ function removeBook(){
     let a = this.id;
 
     clearCards();
-    console.log(a)
     myLibrary.splice(a, 1);
-    console.log(myLibrary);
+    displayLibrary();
+}
+
+function changeRead(){
+
+    let a = this.id;
+
+    clearCards();
+
+    if (myLibrary[a].read === "yes" || myLibrary[a].read === "read"){
+        myLibrary[a].read = "no";
+    }   else{
+        myLibrary[a].read = "yes";
+    }
+
     displayLibrary();
 }
 
