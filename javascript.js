@@ -55,8 +55,12 @@ function clearCards(){
 }
 
 function removeBook(){
+
+    let a = this.id;
+
     clearCards();
-    myLibrary.splice(0, 1);
+    console.log(a)
+    myLibrary.splice(a, 1);
     console.log(myLibrary);
     displayLibrary();
 }
