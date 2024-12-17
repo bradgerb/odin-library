@@ -1,15 +1,16 @@
 const myLibrary =[];
 const container = document.querySelector(".body");
 const newBookForm = document.getElementById("newBookForm");
-let indexCount = 0;
+let bookIndex = 2;
 
-function Book(title, author, pages, read){
+function Book(title, author, pages, read, index){
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read
+    this.read = read;
+    this.index = index;
     this.info = function(){
-        let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read
+        let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read + '. Index number ' + this.index;
         return info
     }
 }
@@ -40,6 +41,7 @@ function displayLibrary(){
 
         container.appendChild(card);
     }
+    console.log(myLibrary);
 }
 
 function clearCards(){
@@ -58,7 +60,8 @@ newBookForm.addEventListener("submit", function (e) {
     //     console.log(item[0], item[1]);
     // }
 
-    const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"));
+    const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"), bookIndex);
+    bookIndex++;
 
     clearCards();
     addBookToLibrary(newBook);
@@ -66,8 +69,8 @@ newBookForm.addEventListener("submit", function (e) {
 
 });
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read')
-const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Rowling', '320', 'read')
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read', 0)
+const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Rowling', '320', 'read', 1)
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(harryPotter1);
