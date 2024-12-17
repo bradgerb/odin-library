@@ -9,11 +9,13 @@ body{
 .body{
     display: flex;
     background-color: burlywood;
-    width: 100vw;
+    min-width: 100vw;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .sidebar{
-    height: 100vh;
+    min-height: 100vh;
     padding: 10px;
     background-color: lightblue;
     border-right: black solid 1px;
