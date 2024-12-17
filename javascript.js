@@ -2,6 +2,7 @@ const myLibrary =[];
 const container = document.querySelector(".body");
 const newBookForm = document.getElementById("newBookForm");
 let bookIndex = 2;
+const a = 1; //testing
 
 function Book(title, author, pages, read, index){
     this.title = title;
@@ -36,6 +37,7 @@ function displayLibrary(){
         card.textContent = `Title: ${myLibrary[i].title}\nAuthor: ${myLibrary[i].author}\nPage Count: ${myLibrary[i].pages}\nRead?: ${readY_N}\n`;
 
         const button = document.createElement("button");
+        button.addEventListener("click", removeBook);
         button.textContent = "Remove";
         card.appendChild(button);
 
@@ -49,6 +51,13 @@ function clearCards(){
     for(let i = 0; i < myLibrary.length; i++){
         container.removeChild(container.lastChild);
     }
+}
+
+function removeBook(){
+    clearCards();
+    myLibrary.splice(a-1, a);
+    console.log(myLibrary);
+    displayLibrary();
 }
 
 newBookForm.addEventListener("submit", function (e) {
