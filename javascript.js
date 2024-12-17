@@ -1,6 +1,7 @@
 const myLibrary =[];
 const container = document.querySelector(".body");
 const newBookForm = document.getElementById("newBookForm");
+let indexCount = 0;
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -23,7 +24,7 @@ function displayLibrary(){
 
         let readY_N;
 
-        if (myLibrary[i].read === 'read'){
+        if (myLibrary[i].read === 'read' || myLibrary[i].read === 'yes'){
             readY_N = "Yes"
         } else {
             readY_N = "No"
@@ -42,7 +43,7 @@ function displayLibrary(){
 }
 
 function clearCards(){
-    console.log(myLibrary);
+
     for(let i = 0; i < myLibrary.length; i++){
         container.removeChild(container.lastChild);
     }
@@ -51,8 +52,18 @@ function clearCards(){
 newBookForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // addBookToLibrary();
+    const formData = new FormData(newBookForm);
+
+    // for (item of formData) {
+    //     console.log(item[0], item[1]);
+    // }
+
+    const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"));
+    console.log(newBook);
+    console.log(myLibrary);
+
     clearCards();
+    addBookToLibrary(newBook);
     displayLibrary();
 
 });
