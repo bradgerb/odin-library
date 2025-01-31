@@ -103,7 +103,7 @@ newBookForm.addEventListener("submit", function (e) {
     const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"));
 
     clearCards();
-    Book.addBookToLibrary(newBook);
+    newBook.addBookToLibrary(newBook);
     displayLibrary();
 
 });
