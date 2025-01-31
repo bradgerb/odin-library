@@ -2,20 +2,25 @@ const myLibrary =[];
 const container = document.querySelector(".body");
 const newBookForm = document.getElementById("newBookForm");
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function(){
-        let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read;
-        return info
+class Book {
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.info = function(){
+            let info = this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + this.read;
+            return info
+        }
+    }
+    addBookToLibrary(bookName){
+        myLibrary.push(bookName);
     }
 }
 
-function addBookToLibrary(bookName){
-    myLibrary.push(bookName);
-}
+// function addBookToLibrary(bookName){
+//     myLibrary.push(bookName);
+// }
 
 function displayLibrary(){
 
@@ -42,11 +47,11 @@ function displayLibrary(){
         removeButton.addEventListener("click", removeBook);
         card.appendChild(removeButton);
 
-        const changeReadButtton = document.createElement("button");
-        changeReadButtton.setAttribute("ID", `${index}`);
-        changeReadButtton.textContent = "Change Read status";
-        changeReadButtton.addEventListener("click", changeRead);
-        card.appendChild(changeReadButtton);
+        const changeReadButton = document.createElement("button");
+        changeReadButton.setAttribute("ID", `${index}`);
+        changeReadButton.textContent = "Change Read status";
+        changeReadButton.addEventListener("click", changeRead);
+        card.appendChild(changeReadButton);
 
         index++;
 
@@ -98,7 +103,7 @@ newBookForm.addEventListener("submit", function (e) {
     const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("pages"), formData.get("read"));
 
     clearCards();
-    addBookToLibrary(newBook);
+    Book.addBookToLibrary(newBook);
     displayLibrary();
 
 });
@@ -106,7 +111,7 @@ newBookForm.addEventListener("submit", function (e) {
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read', 0)
 const harryPotter1 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K.Rowling', '320', 'read', 1)
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(harryPotter1);
+theHobbit.addBookToLibrary(theHobbit);
+harryPotter1.addBookToLibrary(harryPotter1);
 
 displayLibrary();
